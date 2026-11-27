@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#071426">
-  <meta name="description" content="国际支付卡开通流程、费用说明与卡片信息指南。">
+  <meta name="description" content="国际支付卡开通流程、费用说明与国际支付卡信息指南。">
   <title>国际支付卡 · 开通指南</title>
   <link rel="preconnect" href="https://free.boltp.com">
   <style>
@@ -90,7 +90,7 @@
     .help-panel strong{display:block;color:#17465a;font-size:16px}
     .help-panel p{margin:3px 0 0;color:#617b8e;font-size:13px}
     .help-id{font-weight:900;color:#078f83;letter-spacing:.06em;font-size:15px}
-    .help-button{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:11px;background:#0c9f91;color:white;text-decoration:none;font-size:13px;font-weight:850;white-space:nowrap}
+    .help-button{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:0;border-radius:11px;background:#0c9f91;color:white;text-decoration:none;font-size:13px;font-weight:850;white-space:nowrap;cursor:pointer}
     .image-frame{padding:10px;border-radius:17px;border:1px solid #e2eaf1;background:#f7fafc}
     .image-frame img{width:100%;display:block;border-radius:11px;cursor:zoom-in}
     .image-caption{text-align:center;color:#7c8fa2;font-size:11px;margin:12px 0 2px}
@@ -115,9 +115,29 @@
       .contact{align-items:flex-start;flex-direction:column;gap:5px}
       .top-tag{font-size:9px}.hero-copy{font-size:14px}
     }
+  
+    .auth-gate{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:22px;background:linear-gradient(135deg,#eef6fc,#e7faf5);}
+    .auth-gate.hidden{display:none}.auth-card{width:min(100%,420px);background:white;border:1px solid #dce8f0;border-radius:24px;padding:30px;box-shadow:0 25px 70px rgba(28,67,105,.16)}
+    .auth-mark{width:46px;height:46px;border-radius:15px;background:linear-gradient(135deg,#20c5ad,#438fe8);color:white;display:grid;place-items:center;font-size:20px;font-weight:900;margin-bottom:18px}
+    .auth-card h2{font-size:24px;margin:0 0 9px;color:#193954}.auth-card p{font-size:14px;color:#617b8e;margin:0 0 20px}.auth-card input{width:100%;font:inherit;padding:13px 14px;border:1px solid #dce8f0;border-radius:12px;outline:none}.auth-card input:focus{border-color:#0caa98;box-shadow:0 0 0 3px #0caa981a}.auth-submit{width:100%;margin-top:12px;border:0;border-radius:12px;padding:13px;background:linear-gradient(100deg,#13bba5,#3b9ce0);color:#fff;font:inherit;font-weight:900;cursor:pointer}.auth-error{color:#d64d62;font-size:12px;margin-top:10px;min-height:20px}.auth-note{font-size:11px;color:#8195a7;margin-top:14px}
+    .auth-success{display:none;background:#effaf6;border:1px solid #d4eee5;color:#26675a;padding:14px;border-radius:13px;font-size:14px;line-height:1.8;margin-top:16px}.auth-success.show{display:block}
+    .copy-toast{position:fixed;z-index:1001;bottom:22px;left:50%;transform:translate(-50%,15px);opacity:0;pointer-events:none;background:#173954;color:white;border-radius:999px;padding:10px 16px;font-size:13px;transition:.2s}.copy-toast.show{opacity:1;transform:translate(-50%,0)}
+
   </style>
 </head>
 <body>
+
+  <div class="auth-gate" id="authGate" role="dialog" aria-modal="true" aria-label="密码验证">
+    <form class="auth-card" id="authForm">
+      <div class="auth-mark">P</div><h2>访问验证</h2>
+      <p>访问本网站需输入密码，方可查看国际支付卡开通流程。</p>
+      <input id="accessPassword" type="password" inputmode="numeric" autocomplete="current-password" placeholder="请输入访问密码" aria-label="访问密码" required>
+      <button class="auth-submit" type="submit">验证并进入</button><div class="auth-error" id="authError"></div>
+      <div class="auth-success" id="authSuccess">尊贵的用户，密码验证通过！您已获得查看权限，请按顺序仔细阅读全部步骤并同步实操。过程中如有疑问，欢迎随时联系客服咨询。</div>
+      <div class="auth-note">验证成功后，本浏览器将记住访问权限，下次打开无需重复输入。</div>
+    </form>
+  </div><div class="copy-toast" id="copyToast">微信号已复制</div>
+
   <div class="wrap">
     <nav class="topbar">
       <div class="brand"><span class="brand-mark">P</span> PAYMENT GUIDE</div>
@@ -130,10 +150,10 @@
       <div>
         <div class="eyebrow">Digital payment · Quick start</div>
         <h1><span>国际支付卡</span><br>开通指南</h1>
-        <p class="hero-copy">从账户准备、卡片申请到信息查看，清晰了解每个操作环节。建议按页面顺序完成，并在操作前确认平台最新规则。</p>
+        <p class="hero-copy">从账户准备、国际支付卡申请到信息查看，清晰了解每个操作环节。建议按页面顺序完成，并在操作前确认平台最新规则。</p>
         <nav class="hero-nav" aria-label="页面导航">
-          <a class="nav-chip" href="#registration"><span class="n">01</span>账户注册</a>
-          <a class="nav-chip" href="#fees"><span class="n">02</span>申请与费用</a>
+          <a class="nav-chip" href="#registration"><span class="n">01</span>必备账户注册</a>
+          <a class="nav-chip" href="#fees"><span class="n">02</span>申请费用说明</a>
           <a class="nav-chip" href="#tips"><span class="n">03</span>操作注意事项</a>
           <a class="nav-chip" href="#contact"><span class="n">04</span>联系徽信客服</a>
         </nav>
@@ -144,57 +164,57 @@
 
   <div class="wrap" style="padding-top:22px">
     <aside class="help-panel" id="contact">
-      <div><strong>遇到问题？联系徽信客服获取帮助</strong><p>操作疑问、页面无法打开等问题，可添加徽信咨询。</p><div class="help-id">徽信号：VIPTP66</div></div>
-      <a class="help-button" href="weixin://" aria-label="打开微信">联系徽信客服 <span>↗</span></a>
+      <div><strong>遇到问题？联系微信客服获取帮助</strong><p>操作疑问、页面无法打开等问题，可添加微信咨询。</p><div class="help-id">微信号：VIPTP66</div></div>
+      <button class="help-button copy-wechat" type="button" aria-label="复制微信号">联系微信客服</button>
     </aside>
   </div>
 
   <main class="wrap">
     <section class="section" id="registration">
-      <div class="section-head"><div class="num">01</div><div><h2>注册必备账户</h2><p class="desc">开始申请前，请先准备并完成以下两个账户的注册。</p></div></div>
+      <div class="section-head"><div class="num">01</div><div><h2>必须注册的账户</h2><p class="desc">开始申请前，请先完成以下两个账户的注册。</p></div></div>
       <div class="steps">
         <article class="step"><div class="step-top"><span class="step-index">01</span><strong>注册 国际支付卡 账户</strong></div><p>进入注册页面，按照平台提示完成账户创建及所需验证。</p><a class="btn" href="https://okx.s.gy/HzT0Mm" target="_blank" rel="noopener noreferrer">点击前往注册 <span>↗</span></a></article>
-        <article class="step"><div class="step-top"><span class="step-index">02</span><strong>注册 OKX 账户</strong></div><p>进入 OKX 官方网站，选择中国居住地完成账户创建及所需验证。</p><a class="btn secondary" href="https://okx.s.gy/Vy90wP" target="_blank" rel="noopener noreferrer">点击前往注册 <span>↗</span></a></article>
+        <article class="step"><div class="step-top"><span class="step-index">02</span><strong>注册欧易（OKX）账户</strong></div><p>进入 OKX 官方网站，选择<b>中国居住地</b>完成账户创建及所需验证。</p><a class="btn secondary" href="https://okx.s.gy/Vy90wP" target="_blank" rel="noopener noreferrer">点击前往注册 <span>↗</span></a></article>
       </div>
     </section>
 
     <section class="section" id="fees">
-      <div class="section-head"><div class="num">02</div><div><h2>卡片申请与费用说明</h2><p class="desc">请在申请前了解资金构成、日常使用及注销相关费用。</p></div></div>
-      <div class="warning"><span class="warning-icon">⚠</span><div><strong>申请前请确认费用规则</strong><br>费用与退款条件可能因平台政策调整而变化，实际以申请页面及平台最新规则为准。</div></div>
+      <div class="section-head"><div class="num">02</div><div><h2>国际支付卡申请情况说明</h2><p class="desc">请在申请前了解卡片性质、日常使用及注销相关费用。</p></div></div>
+      <div class="warning"><span class="warning-icon">⚠</span><div><strong>申请前请确认卡片性质与费用规则</strong><br>国际支付卡是美国的，可以充值绑定各种AI工具，包括GPT/Claude/Gemini/美区苹果商城 AppStore 等工具，自带账单地址，保持良好的用卡习惯<b>可反复使用5年</b>。</div></div>
       <div class="fee-grid">
         <div class="fee"><div class="fee-label">首次充值金额</div><div class="fee-value"><em>21U</em></div><div class="fee-foot">10U 保证金（冻结不可用）+ 11U 可用</div></div>
-        <div class="fee"><div class="fee-label">整体开卡花费参考</div><div class="fee-value"><em>≈5U</em></div><div class="fee-foot">以实际扣费及退款结果为准</div></div>
+        <div class="fee"><div class="fee-label">首次开卡不收费</div><div class="fee-value"><em>≈5U</em></div><div class="fee-foot">此处费用指的是注销卡片费用，不注销无此费用。</div></div>
       </div>
       <div class="list">
-        <div class="list-item"><span class="bullet"></span><span>长期使用时，根据实际消费情况充值，卡上可保持约 1–2 美元余额。</span></div>
-        <div class="list-item"><span class="bullet"></span><span>如不再使用，可按平台流程申请注销。注销费用参考为 5.99U（含开卡赠送的 1U）。</span></div>
-        <div class="list-item"><span class="bullet"></span><span>注销后满 1 个月无交易，符合条件时自动退回 10U 保证金及未使用余额。</span></div>
+        <div class="list-item"><span class="bullet"></span><span>长期使用卡片，根据实际消费情况充值，卡上持续保持约 1–2 美元余额就行。</span></div>
+        <div class="list-item"><span class="bullet"></span><span>如不再使用卡片，可按平台流程申请注销。注销费用参考为 5.99U（含开卡赠送的 1U）实际注销卡片4.99U。</span></div>
+        <div class="list-item"><span class="bullet"></span><span>注销后满 1 个月无交易，自动退回 10U 保证金及未使用余额，后续可转回支付宝/微信。</span></div>
       </div>
     </section>
 
     <section class="section" id="tips">
       <div class="section-head"><div class="num">03</div><div><h2>操作注意事项</h2><p class="desc">提前了解常见情况，减少申请过程中的操作问题。</p></div></div>
       <div class="notice-grid">
-        <article class="notice-card"><div class="icon">!</div><div><strong>网络环境</strong><p>页面打不开的，要用魔法上网（东南亚最佳，其他地区也可以）</p></div></article>
-        <article class="notice-card"><div class="icon">!</div><div><strong>页面访问</strong><p>魔法后依旧打不开，请下滑本文档，联系我处理。</p></div></article>
-        <article class="notice-card"><div class="icon">!</div><div><strong>实名要求</strong><p>正规卡都要实名，基本操作，不用再问了（这块没办法跳过，除非不用）。</p></div></article>
+        <article class="notice-card"><div class="icon">!</div><div><strong>页面打不开的</strong><p>要用魔法上网（东南亚最佳，其他地区也可以，具体自行测试）。</p></div></article>
+        <article class="notice-card"><div class="icon">!</div><div><strong>魔法后依旧打不开</strong><p>请上滑本文档，联系客服徽信处理。</p></div></article>
+        <article class="notice-card"><div class="icon">!</div><div><strong>平台实名要求</strong><p>正规卡都要实名，基本操作，不用再问了（这块没办法跳过，除非不用）。</p></div></article>
       </div>
     </section>
 
-    <a class="next-link" href="https://docs.qq.com/doc/DTmx2Z3VEY1VxSm5L" target="_blank" rel="noopener noreferrer">
-      <div><strong>第二部分：充值激活卡片教程</strong><small>点击进入第二部分，查看充值与卡片激活的完整操作步骤</small></div><span class="next-arrow">↗</span>
+    <a class="next-link" href="recharge.html">
+      <div><strong>第二部分：国际支付卡充值激活教程</strong><small>点击进入第二部分，查看国际支付卡充值与激活的完整操作步骤</small></div><span class="next-arrow">↗</span>
     </a>
 
     <section class="section" id="card-info">
-      <div class="section-head"><div class="num">04</div><div><h2>卡片信息说明</h2><p class="desc">申请完成后，可根据示意图查看卡片资料对应位置。</p></div></div>
-      <div class="image-frame"><img id="cardImage" src="https://free.boltp.com/2026/11/26/6b081593a4d18.webp" alt="国际支付卡卡片信息说明" loading="lazy"></div>
-      <p class="image-caption">卡片信息示意 · 点击图片查看高清大图</p>
+      <div class="section-head"><div class="num">04</div><div><h2>国际支付卡信息说明</h2><p class="desc">申请完成后，可根据示意图查看国际支付卡资料对应位置。</p></div></div>
+      <div class="image-frame"><img id="cardImage" src="https://free.boltp.com/2026/11/26/6b081593a4d18.webp" alt="国际支付卡国际支付卡信息说明" loading="lazy"></div>
+      <p class="image-caption">国际支付卡信息示意 · 点击图片查看高清大图</p>
     </section>
 
   </main>
   <footer class="wrap">INTERNATIONAL PAYMENT CARD · USER GUIDE</footer>
 
-  <div class="lightbox" id="lightbox" role="dialog" aria-label="卡片信息大图"><button class="close" id="closeLightbox" aria-label="关闭">×</button><img src="https://free.boltp.com/2026/11/26/6b081593a4d18.webp" alt="国际支付卡卡片信息说明大图"></div>
+  <div class="lightbox" id="lightbox" role="dialog" aria-label="国际支付卡信息大图"><button class="close" id="closeLightbox" aria-label="关闭">×</button><img src="https://free.boltp.com/2026/11/26/6b081593a4d18.webp" alt="国际支付卡国际支付卡信息说明大图"></div>
   <script>
     const image=document.getElementById('cardImage');
     const lightbox=document.getElementById('lightbox');
@@ -203,6 +223,29 @@
     document.getElementById('closeLightbox').addEventListener('click',close);
     lightbox.addEventListener('click',e=>{if(e.target===lightbox)close()});
     document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+
+    // Access password gate; authorization is remembered on this browser/device.
+    const authGate=document.getElementById('authGate');
+    const authForm=document.getElementById('authForm');
+    const authError=document.getElementById('authError');
+    const authSuccess=document.getElementById('authSuccess');
+    if(localStorage.getItem('internationalCardGuideAccess')==='granted') authGate.classList.add('hidden');
+    authForm.addEventListener('submit',e=>{
+      e.preventDefault();
+      if(document.getElementById('accessPassword').value==='8888'){
+        localStorage.setItem('internationalCardGuideAccess','granted');
+        authError.textContent='';authSuccess.classList.add('show');
+        setTimeout(()=>authGate.classList.add('hidden'),2200);
+      }else authError.textContent='密码错误，请重新输入。';
+    });
+    const toast=document.getElementById('copyToast');
+    document.querySelectorAll('.copy-wechat').forEach(btn=>btn.addEventListener('click',async()=>{
+      const value='VIPTP66';
+      try{await navigator.clipboard.writeText(value);toast.textContent='微信号 VIPTP66 已复制';}
+      catch(err){const ta=document.createElement('textarea');ta.value=value;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');toast.textContent='微信号 VIPTP66 已复制';}catch(e){toast.textContent='请手动复制微信号：VIPTP66'}ta.remove();}
+      toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2200);
+    }));
+
   </script>
 </body>
 </html>
