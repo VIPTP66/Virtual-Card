@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f7fbff">
+<title>国际支付卡 · 余额提取与注销指南</title>
+<style>
+:root{--ink:#193954;--text:#405a72;--muted:#71869a;--line:#e1eaf1;--teal:#0b9f91;--blue:#347fd0;--shadow:0 12px 34px rgba(29,67,101,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#f8fbff,#f2f7fb);color:var(--text);font:15px/1.8 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+.wrap{width:min(100% - 40px,1000px);margin:auto}.topbar{height:68px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e5edf4}
+.brand{display:flex;align-items:center;gap:10px;color:#203e5a;font-size:12px;font-weight:900;letter-spacing:.13em}.mark{width:30px;height:30px;border-radius:10px;background:linear-gradient(135deg,#19bca7,#438fe8);display:grid;place-items:center;color:white}
+.toplink{font-size:12px;color:#3977b9;text-decoration:none;border:1px solid #dce8f3;background:#fff;border-radius:999px;padding:7px 13px}
+.hero{padding:48px 0 36px;background:linear-gradient(115deg,#fff,#eefaf8 58%,#eef5ff);border-bottom:1px solid #e5edf4}.eyebrow{color:#078f83;font-size:11px;font-weight:900;letter-spacing:.18em}
+h1{font-size:clamp(30px,5vw,48px);line-height:1.2;color:#173954;margin:14px 0 10px;font-weight:900;letter-spacing:-.04em}h1 span{background:linear-gradient(90deg,#078f83,#347fd0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{margin:0;color:#627b92;font-size:14px}.pills{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}.pill{padding:6px 11px;border:1px solid #dce9ef;background:#ffffffc9;border-radius:999px;color:#557187;font-size:11px;font-weight:700}
+main{padding:30px 0 58px}.panel{background:#fff;border:1px solid var(--line);border-radius:20px;padding:clamp(20px,4vw,32px);margin-bottom:19px;box-shadow:var(--shadow);position:relative;overflow:hidden}.panel:before{content:"";position:absolute;left:0;top:0;width:100px;height:3px;background:linear-gradient(90deg,#18b9a5,transparent)}
+.head{display:flex;gap:14px;margin-bottom:20px}.num{width:42px;height:42px;flex:0 0 42px;border-radius:13px;background:linear-gradient(135deg,#e5faf5,#eaf3ff);display:grid;place-items:center;color:#078f83;font-weight:900}
+h2{margin:0;color:var(--ink);font-size:21px;line-height:1.4}.sub{margin:5px 0 0;color:var(--muted);font-size:13px}
+.intro{padding-left:22px;margin:0 0 12px}.intro li{padding:2px 0}.contactline{padding:12px 15px;background:#f1faf8;border:1px solid #d9f0eb;border-radius:13px;color:#426879;font-size:14px}.contactline b{color:#078f83}
+.choice-title{font-size:14px;font-weight:800;color:#5e758a;margin:0 0 12px}.choices{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.choice{border:1px solid #dce8f1;border-radius:17px;background:linear-gradient(145deg,#fff,#f7fbff);padding:19px 20px;text-align:left;cursor:pointer;transition:.2s;min-height:112px;color:var(--ink);font:inherit;position:relative}
+.choice:hover{transform:translateY(-2px);border-color:#8ed9ce;box-shadow:0 9px 22px #1e82821a}.choice.active{border:2px solid #11a997;background:linear-gradient(130deg,#effbf8,#f1f7ff);padding:18px 19px;box-shadow:0 8px 24px #0e9d8f1f}
+.choice .cn{display:inline-grid;place-items:center;width:27px;height:27px;border-radius:9px;background:#e5f7f3;color:#078f83;font-size:11px;font-weight:900;margin-right:8px}.choice strong{font-size:17px}.choice small{display:block;margin:8px 0 0 36px;color:#71869a;font-size:12px}.tick{position:absolute;right:17px;top:17px;color:#0b9f91;opacity:0}.choice.active .tick{opacity:1}
+.scenario{display:none;margin-top:19px;animation:fade .22s ease}.scenario.active{display:block}@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.banner{display:flex;align-items:center;gap:12px;padding:15px 17px;border-radius:14px;background:linear-gradient(100deg,#e9f8f4,#eef5ff);border:1px solid #d8ecea;margin-bottom:18px}.letter{width:34px;height:34px;border-radius:11px;background:#0b9f91;color:white;display:grid;place-items:center;font-weight:900;flex:0 0 34px}.banner strong{color:#17465b;font-size:16px}.banner small{display:block;color:#71869a;font-size:12px}
+h3{font-size:15px;color:#244760;margin:19px 0 9px}.nums{list-style:none;padding:0;margin:0;counter-reset:item}.nums li{counter-increment:item;position:relative;padding:5px 0 5px 32px;color:#405970}.nums li:before{content:counter(item) ".";position:absolute;left:0;top:5px;color:#347fd0;font-weight:900}
+.bullets{padding-left:21px;margin:7px 0}.bullets li{padding:3px 0;color:#405970}.tip{margin-top:14px;padding:14px 16px;border-radius:13px;background:#fff7e8;border:1px solid #f0dfbd;color:#735a2e;font-size:13px}
+.steps{display:grid;gap:13px}.step{border:1px solid #e3ecf3;border-radius:15px;padding:17px 18px;background:linear-gradient(145deg,#fcfdff,#f7fafc)}.steptitle{display:flex;align-items:center;gap:10px;color:#244760;font-weight:850;margin-bottom:8px}.tag{width:27px;height:27px;border-radius:9px;background:#e8f2ff;color:#2878c9;display:grid;place-items:center;font-size:11px;font-weight:900}
+.notice{padding:14px 16px;background:#fff4f4;border:1px solid #f3d9dc;border-radius:13px;color:#8f4651;font-size:13px;margin-top:14px}
+.help{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:22px 24px;background:linear-gradient(110deg,#087f78,#168fae 60%,#347fce);border-radius:18px;color:white;box-shadow:0 13px 28px #18829730;margin-bottom:20px}.help h2{color:white;font-size:19px}.help p{margin:4px 0 0;color:#d9f7f5;font-size:13px}.wechat{font-weight:900;letter-spacing:.04em;color:white}
+.copy{border:0;border-radius:12px;background:#fff;color:#087f78;font-size:13px;font-weight:900;padding:12px 17px;cursor:pointer;white-space:nowrap}.copy:hover{background:#eafffa}
+.toast{position:fixed;left:50%;bottom:25px;transform:translate(-50%,20px);background:#173954;color:white;padding:10px 17px;border-radius:999px;font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:10}.toast.show{opacity:1;transform:translate(-50%,0)}
+footer{text-align:center;color:#91a2b2;font-size:11px;padding:0 0 26px;letter-spacing:.05em}
+@media(max-width:650px){.wrap{width:min(100% - 28px,1000px)}.topbar{height:60px}.hero{padding:38px 0 29px}.choices{grid-template-columns:1fr}.choice{min-height:94px}.help{align-items:flex-start;flex-direction:column;padding:20px}.copy{width:100%}.panel{padding:21px 17px}.head{gap:11px}h2{font-size:19px}}
+</style>
+</head>
+<body>
+<div class="wrap"><header class="topbar"><div class="brand"><span class="mark">P</span> PAYMENT GUIDE</div><a class="toplink" href="index.html">← 返回首页</a></header></div>
+<header class="hero"><div class="wrap"><div class="eyebrow">CARD BALANCE · REFUND & CANCELLATION</div><h1><span>余额提取</span> &amp; 注销指南</h1><p>根据你的使用计划，选择对应情况，查看余额提取、卡片注销及资金转回步骤。</p><div class="pills"><span class="pill">余额提取</span><span class="pill">保证金退回</span><span class="pill">资金转回</span></div></div></header>
+<main class="wrap">
+<section class="panel"><div class="head"><div class="num">01</div><div><h2>先对号入座</h2><p class="sub">根据你后续是否继续使用这张卡，选择对应情况。</p></div></div>
+<ul class="intro"><li>只是暂时不用，之后还要用这张卡 → 看情况一</li><li>不打算再用了，想把钱全部拿回来退卡 → 看情况二</li></ul>
+<div class="contactline">💬 操作中卡住了？加微信 <b>VIPTP66</b>，我帮你一对一处理。</div></section>
+<section class="panel" id="choose"><div class="head"><div class="num">02</div><div><h2>选择你的处理方式</h2><p class="sub">点击下面的大按钮，只显示你需要查看的操作流程。</p></div></div>
+<p class="choice-title">请选择一种情况：</p>
+<div class="choices" role="group" aria-label="选择情况">
+<button class="choice active" data-target="case1" aria-pressed="true"><span class="cn">情况一</span><strong>保留卡，继续使用</strong><span class="tick">✓</span><small>只提取多余余额，保留卡片正常使用</small></button>
+<button class="choice" data-target="case2" aria-pressed="false"><span class="cn">情况二</span><strong>注销卡，取回全部资金</strong><span class="tick">✓</span><small>不再使用卡片，完成注销并转回资金</small></button>
+</div>
+<div class="scenario active" id="case1"><div class="banner"><div class="letter">A</div><div><strong>情况一：卡继续用，只把多余余额取出来</strong><small>保留卡片，不注销账户</small></div></div>
+<h3>先记住三件事：</h3><ol class="nums">
+<li>卡里留 1–2 美元。卡上一直有余额，银行端就不会把它当成“睡眠卡”强制注销。</li>
+<li>每个月至少消费一次，金额不限，买瓶水、充个小额都行，就是让银行看到这张卡在正常使用。</li>
+<li>10U 保证金取不出来。因为卡没注销，这笔押金只能继续放在平台上，只有走情况二注销后才会退。</li></ol>
+<h3>提取步骤：</h3><ol class="nums">
+<li>打开【卡片App】，点【卡号】，拿到卡片信息（卡号、有效期、CVV）。</li>
+<li>打开【支付宝】或【微信】，进入【银行卡】页面，把这张【乐享卡】添加进去。</li>
+<li>找身边商店、饭店、小摊的【经营收款码】。</li>
+<li>输入金额 = 卡内余额 <strong>减去（1–2 美元）</strong>，剩下的钱，扫码支付出去，汇率自己算好，钱就从支付宝 / 微信消费出去了。</li></ol>
+<h3>两个提醒：</h3><ul class="bullets"><li>⚠️ <strong>单笔尽量控制在 200 元以内。</strong>超过该金额手续费很高，余额多的话就分几笔扫。</li><li>什么是“经营收款码”？就是你平时扫码付款时，商家柜台、摊位上的那张收款二维码（不是个人转账码）。找不到的话，可以找熟悉的店家帮忙扫一下。</li></ul>
+</div>
+<div class="scenario" id="case2"><div class="banner"><div class="letter">B</div><div><strong>情况二：卡不用了，把钱全部取出并注销</strong><small>按顺序完成余额处理、注销及资金转回</small></div></div>
+<h3>注销前必须做完这 4 步：</h3><ol class="nums">
+<li>确认所有订单都已结算完成，没有待处理、待结算的订单。</li>
+<li>卡里留够 6 美元以上。注销时会收 5 美元手续费，还要收回开卡时送你的 1 美元，合计 6 美元。<strong>超过 6 美元的部分，先按情况一的方法扫码取出来</strong>，可以多留一些，别弄的刚刚好，可以直接扫给熟悉的商家。</li>
+<li>解绑银行卡绑定过这张卡的平台，尤其是连续包月、自动续费的项目（ChatGPT、Claude、苹果商店等），否则下个月扣款失败会产生手续费。</li>
+<li>以上都确认无误，再提交注销。</li></ol>
+<h3>钱怎么样回来：</h3><div class="steps">
+<div class="step"><div class="steptitle"><span class="tag">1</span>第一步：等待保证金退回</div><ul class="bullets"><li>注销后 <strong>1 个月内不再产生新订单</strong>，平台会自动把 <strong>10U 保证金 + 剩余余额</strong>一起退回你的平台账户。</li></ul></div>
+<div class="step"><div class="steptitle"><span class="tag">2</span>第二步：卡 → 欧易</div><ol class="nums"><li>打开【欧易】，点【充币】，选择【USDT】，网络选【Solana】，复制地址。</li><li>回到【卡片平台】，点【提币】，选择【链上提币】，币种选【USDT】，网络选【Solana】，粘贴刚复制的地址。</li><li>【提币数量】选择“最大”，然后提交。</li></ol><div class="notice">注意：【卡片平台】与【欧易】的【币种和网络】一定要选择【一模一样】的，不然款项将不会到账！！！</div></div>
+<div class="step"><div class="steptitle"><span class="tag">3</span>第三步：欧易 → 现金</div><ol class="nums"><li>等钱到【欧易】后，打开欧易的【C2C 买币】，进入【快捷区】。</li><li>选择【出售】，把余额全部填进去，跟着平台提示完成卖出。</li></ol></div>
+</div></div></section>
+<section class="help" id="wechat-help"><div><h2>操作中卡住了？联系微信客服</h2><p>微信号：<span class="wechat" id="wechat">VIPTP66</span> · 点击右侧按钮自动复制微信号</p></div><button class="copy" id="copy" type="button">复制微信号</button></section>
+</main><footer class="wrap">INTERNATIONAL PAYMENT CARD · BALANCE &amp; CANCELLATION GUIDE</footer><div class="toast" id="toast" role="status" aria-live="polite">微信号已复制</div>
+<script>
+const buttons=[...document.querySelectorAll('.choice')],panels=[...document.querySelectorAll('.scenario')];
+buttons.forEach(btn=>btn.addEventListener('click',()=>{buttons.forEach(b=>{const on=b===btn;b.classList.toggle('active',on);b.setAttribute('aria-pressed',String(on))});panels.forEach(p=>p.classList.toggle('active',p.id===btn.dataset.target));}));
+document.getElementById('copy').addEventListener('click',async()=>{const value=document.getElementById('wechat').textContent.trim(),toast=document.getElementById('toast');try{await navigator.clipboard.writeText(value);toast.textContent='微信号 VIPTP66 已复制'}catch(e){const t=document.createElement('textarea');t.value=value;t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();try{document.execCommand('copy');toast.textContent='微信号 VIPTP66 已复制'}catch(_){toast.textContent='请手动复制微信号：VIPTP66'}t.remove()}toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2200)});
+</script>
+</body></html>
